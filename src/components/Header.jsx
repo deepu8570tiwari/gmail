@@ -38,11 +38,11 @@ const Optionwrapper=styled(Box)({
     marginLeft:20
   }
 })
-export default function Header() {
+export default function Header({toggleDrawer}) {
   return (
-    <AppStyledAppbar>
+    <AppStyledAppbar position='static'>
         <Toolbar>
-            <MenuIcon color="action"/>
+            <MenuIcon color="action" onClick={toggleDrawer}/>
             <img src={gmaillogo} alt="logo" style={{width:100, marginLeft:15}}/>
             <SearchWrapper>
                 <SearchIcon color="action"/>
