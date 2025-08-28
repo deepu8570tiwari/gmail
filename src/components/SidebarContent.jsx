@@ -1,6 +1,8 @@
 import { Box, Button, styled, List, ListItem } from '@mui/material'
 import CreateIcon from '@mui/icons-material/Create';
 import { SidebarConfig } from '../config/SidebarConfig';
+import ComposeMail from '../components/ComposeMail';
+import { useState } from 'react';
 
 const ButtonStyled=styled(Button)({
     background:"#c2e7ff",
@@ -23,8 +25,12 @@ const Container=styled(Box)({
   }
 })
 export default function SidebarContent() {
+  const [openDialog,setOpenDialog]=useState(false);
+  const onComposedClick=()=>{
+    setOpenDialog(true);
+  }
   return (
-    <Container><ButtonStyled variant="contained"><CreateIcon/> Compose </ButtonStyled>
+    <Container><ButtonStyled onClick={()=>onComposedClick()} variant="contained"><CreateIcon/> Compose </ButtonStyled>
           <List>{
             SidebarConfig.map(data=>(
               <ListItem>
@@ -33,6 +39,7 @@ export default function SidebarContent() {
             ))
           }
           </List>
+          <ComposeMail openDialog={openDialog} setOpenDialog={setOpenDialog}/>
     </Container>
   )
 }
