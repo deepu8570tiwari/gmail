@@ -1,6 +1,8 @@
 import { Box, Dialog, InputBase, TextField, Typography, styled } from '@mui/material'
 import { Close, DeleteOutline } from '@mui/icons-material'
 import useApi from '../hooks/useApi';
+import { API_URLS } from '../services/apiurl';
+import { useState } from 'react';
 
 const MainHeader=styled(Box)({
   display:"flex",
@@ -37,6 +39,8 @@ const SendButton=styled(Box)({
   textAlign:"center"
 })
 export default function ComposeMail({openDialog, setOpenDialog}) {
+  const [data,setData]=useState({})
+  const SentEmailService=useApi(API_URLS.saveSentEmail);
   const config={
     Host : "smtp.elasticemail.com",
     Username : "deeputiwari@yopmail.com",
@@ -58,7 +62,25 @@ export default function ComposeMail({openDialog, setOpenDialog}) {
         message => alert(message)
       );
   }
+  const payload={
+    to:"test",
+    from:"dee@gmnail.co",
+    subject:"test",
+    body:"call",
+    date:new Date(),
+    image:"",
+    name:"test",
+    starred:false,
+    type:"sent"
+  }
+  SentEmailService.call(payload);
+  if(!SentEmailService.error){
     setOpenDialog(false);
+    setData({});
+  }else{
+
+  }
+     setOpenDialog(false);
   }
   return (
     <div>
