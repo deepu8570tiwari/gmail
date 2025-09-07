@@ -1,5 +1,7 @@
-import Mains from '../pages/Mains';
-import Email from '../components/Email';
+import { lazy } from 'react';
+const Mains =lazy(()=>import('../pages/Mains'));
+const Email =lazy(()=>import('../components/Email'));
+const ViewEmail =lazy(()=>import('../components/ViewEmail'));
 
 const routes = {
   main: {
@@ -15,8 +17,8 @@ const routes = {
     element: <Email />,
   },
   view: {
-    path: '/*',
-    element: <Email />,
+    path: '/view',
+    element: <ViewEmail />,
   }
 };
 
