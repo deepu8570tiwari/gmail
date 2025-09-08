@@ -41,6 +41,8 @@ const SendButton=styled(Box)({
 export default function ComposeMail({openDialog, setOpenDialog}) {
   const [data,setData]=useState({})
   const SentEmailService=useApi(API_URLS.saveSentEmail);
+  const saveDraftService=useApi(API_URLS.saveDraftEmail);
+
   const config={
     Host : "smtp.elasticemail.com",
     Username : "deeputiwari@yopmail.com",
@@ -48,7 +50,24 @@ export default function ComposeMail({openDialog, setOpenDialog}) {
     Port: 587,
   }
   const closeComposeMail=()=>{
+    const payload={
+    to:"test",
+    from:"dee@gmnail.co",
+    subject:"test",
+    body:"call",
+    date:new Date(),
+    image:"",
+    name:"test",
+    starred:false,
+    type:"draft"
+  }
+  saveDraftService.call(payload);
+  if(!saveDraftService.error){
     setOpenDialog(false);
+    setData({});
+  }else{
+
+  }
   }
   const sendEmail=()=>{
     if(window.Email){

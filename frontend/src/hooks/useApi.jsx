@@ -4,12 +4,12 @@ import API from "../services/api";
     const [response, setResponse]=useState(null);
     const [error, setError]=useState("");
     const [isloader, setIsloader]=useState(false)
-    const call=async(payload)=>{
+    const call=async(payload, type="")=>{
         setResponse(null);
         setError("");
         setIsloader(true);
         try {
-            let res=await API(urlObject, payload);
+            let res=await API(urlObject, payload, type);
             setResponse(res.data);
         } catch (error) {
             setError(error.message);

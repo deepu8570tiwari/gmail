@@ -3,6 +3,8 @@ import CreateIcon from '@mui/icons-material/Create';
 import { SidebarConfig } from '../config/SidebarConfig';
 import ComposeMail from '../components/ComposeMail';
 import { useState } from 'react';
+import { NavLink, useParams } from 'react-router-dom';
+import routes from '../routes/routes';
 
 const ButtonStyled=styled(Button)({
     background:"#c2e7ff",
@@ -18,14 +20,20 @@ const Container=styled(Box)({
     padding: "10px 0 0 5px",
     fontSize:14,
     fontWeight:500,
-    cursor:"pointer"  
+    cursor:"pointer",
+    "& > a" :{
+      textDecoration:"none",
+      color: 'inherit'
+    }
   },
-  '& > ul > li > svg':{
+  '& > ul > a > li > svg':{
     marginRight:20
   }
 })
 export default function SidebarContent() {
+
   const [openDialog,setOpenDialog]=useState(false);
+  const {type}=useParams();
   const onComposedClick=()=>{
     setOpenDialog(true);
   }
@@ -33,9 +41,11 @@ export default function SidebarContent() {
     <Container><ButtonStyled onClick={()=>onComposedClick()} variant="contained"><CreateIcon/> Compose </ButtonStyled>
           <List>{
             SidebarConfig.map(data=>(
-              <ListItem>
-               <data.icons/>{data.title}
-              </ListItem>
+              <NavLink key={data.name} to={`${routes.email.path}/${data.name}`}>
+                <ListItem style={type===data.name.toLowerCase()?{backgroundColor:'#d3e3fd', borderRadius:'0 16px 16px 0'}:{}}>
+                <data.icons/>{data.title}
+                </ListItem>
+              </NavLink>
             ))
           }
           </List>

@@ -27,7 +27,7 @@ export const SidebarConfig= [
         icons:InsertDriveFileOutlined
     },
     {
-        name:"Bin",
+        name:"bin",
         title:"bin",
         icons:DeleteOutline
     },

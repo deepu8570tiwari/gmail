@@ -8,3 +8,18 @@ export const saveEmailController=(request, response)=>{
      response.status(500).json(error.message);   
     }
 }
+export const getEmailType=async (request, response)=>{
+    try {
+        let email;
+        if(false){
+            
+        }else{
+            email=await Email.find({
+                type:request.params.type
+            })
+        }
+        return response.status(200).json(email);
+    } catch (error) {
+     response.status(500).json(error.message);   
+    }
+}
