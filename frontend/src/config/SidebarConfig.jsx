@@ -8,27 +8,27 @@ import { DeleteOutline } from '@mui/icons-material'
 export const SidebarConfig= [
     {
         name:"inbox",
-        title:"inbox",
+        title:"Inbox",
         icons:Photo
     },
     {
         name:"starred",
-        title:"starred",
+        title:"Starred",
         icons:StarOutline
     },
     {
         name:"sent",
-        title:"sent",
+        title:"Sent",
         icons:SendOutlined
     },
     {
         name:"drafts",
-        title:"drafts",
+        title:"Drafts",
         icons:InsertDriveFileOutlined
     },
     {
         name:"bin",
-        title:"bin",
+        title:"Bin",
         icons:DeleteOutline
     },
     {
