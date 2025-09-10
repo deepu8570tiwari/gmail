@@ -11,9 +11,13 @@ export const saveEmailController=(request, response)=>{
 export const getEmailType=async (request, response)=>{
     try {
         let email;
-        if(false){
-            
-        }else{
+        if(request.params.type==="bin"){
+            email=await Email.find({bin:true});
+        }
+        else if(request.params.type==="allmail"){
+            email=await Email.find({});
+        }
+        else{
             email=await Email.find({
                 type:request.params.type
             })
@@ -21,5 +25,13 @@ export const getEmailType=async (request, response)=>{
         return response.status(200).json(email);
     } catch (error) {
      response.status(500).json(error.message);   
+    }
+}
+export const moveEmailToBin=async(request,response)=>{
+    try {
+        await Email.updateMany({_id:{$in:request.body}}, {$set: {bin:true,starred:false,type:''}})
+        return response.status(200).json('email generate successfully');
+    } catch (error) {
+        response.status(500).json(error.message);   
     }
 }

@@ -31,10 +31,10 @@ const Date= styled(Typography)({
 
 
 })
-export default function EmailData({email}) {
+export default function EmailData({email,selectedEmails}) {
   return (
     <Wrapper>
-      <Checkbox fontSize="small"/>
+      <Checkbox fontSize="small" checked={selectedEmails.includes(email?._id)}/>
       <StarBorderIcon fontSize="small" style={{marginRight:10}}/>
         <Box>
             <Typography style={{width:200, overflow:"hidden"}}>
