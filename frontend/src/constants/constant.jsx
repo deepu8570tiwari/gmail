@@ -1,1 +1,2 @@
 export const gmaillogo="https://ssl.gstatic.com/ui/v1/icons/mail/rfr/logo_gmail_lockup_default_1x_r5.png";
+export const emptyImage="https://www.gstatic.com/images/icons/material/system_gm/1x/report_white_20dp.png";
