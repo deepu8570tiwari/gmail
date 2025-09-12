@@ -5,6 +5,8 @@ import useApi from '../hooks/useApi';
 import {Box, Checkbox, List, ListItem} from '@mui/material';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import EmailData from './EmailData';
+import NoEmail from './common/NoEmail';
+import { EMPTY_TABS } from '../constants/constant';
 
 export default function Email() {
   const [selectedEmails, setSelectedEmails]=useState([]);
@@ -13,6 +15,7 @@ export default function Email() {
   const {type}=useParams();
   const getEmailsService=useApi(API_URLS.getEmailFromType);
   const moveEmailsToBinService=useApi(API_URLS.moveEmailsToBin);
+  const deleteEmailService=useApi(API_URLS.deleteEmail);
   
 useEffect(() => {
   getEmailsService.call({}, type);
@@ -29,7 +32,7 @@ useEffect(() => {
   }
   const deleteSelectedEmails=(e)=>{
     if(type==="bin"){
-      
+      deleteEmailService.call(selectedEmails)
     }else{
       moveEmailsToBinService.call(selectedEmails);
       setRefreshScreen(prevState=>!prevState);
@@ -48,10 +51,15 @@ useEffect(() => {
                   key={email._id} 
                   selectedEmails={selectedEmails} 
                   email={email}
+                  setRefreshScreen={setRefreshScreen}
+                  setSelectedEmails={setSelectedEmails}
                 />
             ))
           }
         </List>
+        {
+          getEmailsService?.response?.length===0 && <NoEmail message={EMPTY_TABS[type]}/>
+        }
     </Box>
   )
 }
