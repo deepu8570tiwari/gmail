@@ -31,9 +31,6 @@ const Date= styled(Typography)({
     marginLeft:'auto',
     marginRight:20,
     fontSize:"12px",
-    color:"#f56368",
-
-
 })
 export default function EmailData({email,selectedEmails,setRefreshScreen,setSelectedEmails}) {
     const Navigate= useNavigate();
@@ -64,7 +61,7 @@ export default function EmailData({email,selectedEmails,setRefreshScreen,setSele
             <Indicator>Inbox</Indicator>
             <Typography>{email?.subject}{email?.body && "-"} {email?.body}</Typography>
             <Date>
-                {(new window.Date(email?.date)).getDate()}
+                {(new window.Date(email?.date)).getDate()} &nbsp;
                 {(new window.Date(email?.date)).toLocaleString('default',{month:'long'})}
             </Date>
         </Box>
