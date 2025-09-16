@@ -1,4 +1,3 @@
-import React from 'react'
 import { MailOutline, Photo } from '@mui/icons-material'
 import { StarOutline } from '@mui/icons-material'
 import { SendOutlined } from '@mui/icons-material'

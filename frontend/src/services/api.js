@@ -1,5 +1,4 @@
 import axios from 'axios'
-import useApi from '../hooks/useApi';
 
 const API_URL="http://localhost:8000"
 const API_GMAIL=async(urlObject, payload, type)=>{

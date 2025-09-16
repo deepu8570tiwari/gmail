@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useOutletContext, useParams } from 'react-router-dom'
 import { API_URLS } from '../services/apiurl';
 import useApi from '../hooks/useApi';
-import {Box, Checkbox, List, ListItem} from '@mui/material';
+import {Box, Checkbox, List} from '@mui/material';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import EmailData from './EmailData';
 import NoEmail from './common/NoEmail';
