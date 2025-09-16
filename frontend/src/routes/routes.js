@@ -13,7 +13,7 @@ const routes = {
     element: <Email />,
   },
   invalid: {
-    path: '/*',
+    path: '*',
     element: <Email />,
   },
   view: {

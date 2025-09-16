@@ -1,5 +1,4 @@
 import './App.css';
-import Mains from './pages/Mains';
 import { Suspense, lazy } from 'react';
 import { createBrowserRouter, RouterProvider, Route, createRoutesFromElements, Navigate } from 'react-router-dom';
 import routes from './routes/routes';
@@ -10,7 +9,7 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <Route>
       {/* Redirect root "/" → "/index" */}
-      <Route path={routes.main.path} element={<Navigate to={`${routes.main.path}/inbox`} />} />
+        <Route path="/" element={<Navigate to="/emails/inbox" replace />} />
       
       {/* Main routes */}
       <Route path={routes.main.path} element={routes.main.element}>
@@ -19,7 +18,7 @@ const router = createBrowserRouter(
       </Route>
 
       {/* Catch invalid paths */}
-      <Route path={routes.invalid.path} element={<Navigate to= { `${routes.email.path}/inbox`} />}/>
+      <Route path="*" element={<Navigate to= { `${routes.email.path}/emails/inbox`}  replace/>}/>
     </Route>
   )
 );

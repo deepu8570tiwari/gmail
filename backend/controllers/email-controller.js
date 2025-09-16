@@ -44,7 +44,6 @@ export const getEmailType=async (request, response)=>{
         let email;
          if (request.params.type === "bin") {
             email = await Email.find({ bin: true }).sort(sortByDateDesc);
-            console.log(email+ "testtt")
         } else if (request.params.type === "allmail") {
             email = await Email.find({}).sort(sortByDateDesc);
         }
